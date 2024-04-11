@@ -295,7 +295,8 @@ return formattedDate + " • " + formattedTime;
   // Function to make API call
   function fetchData() {
     // Replace 'API_URL' with your actual API endpoint
-    fetch('https://dev.hightable.ai/tables/view-web?id=581')
+    var params= Object.fromEntries(new URLSearchParams(window.location.search))
+    fetch('https://dev.hightable.ai/tables/view-web?id='+params.id)
       .then(response => response.json()) 
       .then(data => {
 console.log("Fetching data",data);
