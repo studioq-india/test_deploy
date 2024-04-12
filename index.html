@@ -250,7 +250,7 @@ outline: none;
     
       </div>
       <div class="CardBookBtnContainer">
-        <button onclick="checkApp()" class='CardBookBtn'>Book your spot</button>
+        <button onclick="triggerAppOpen()" class='CardBookBtn'>Book your spot</button>
       </div>
     </div>
   </div>  
@@ -318,28 +318,21 @@ console.log("Fetching data",data);
   }
 
 
-  // fetchData();
+  fetchData();
 
-  function checkApp() {
-      // Replace "myapp://" with your custom URI scheme
-      var uri = "tassel://";
-      
-      var timeout = 1000; // Timeout in milliseconds
-      var start = Date.now();
 
-      var timer = setTimeout(function() {
-        var elapsed = Date.now() - start;
-        if (elapsed < timeout + 100) {
-          // The app is installed
-          console.log("App is installed");
-        } else {
-          // The app is not installed
-          console.log("App is not installed");
-        }
-      }, timeout);
+  var fallbackToStore = function() {
+  window.location.replace('https://play.google.com/store/apps/details?id=packgename');
+};
+var openApp = function() {
+  let redirect_url = `Hightable://LoginPageScreen?id=${581}`;
 
-      window.location.href = uri;
-    }
+  window.location.replace(redirect_url);
+};
+var triggerAppOpen = function() {
+  openApp();
+  setTimeout(fallbackToStore, 700);
+};
 </script>
 </body>
 </html>
