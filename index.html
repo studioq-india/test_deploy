@@ -294,10 +294,11 @@ return formattedDate + " • " + formattedTime;
         default: return "th"; 
     }
 }
+var params= Object.fromEntries(new URLSearchParams(window.location.search))
+
   // Function to make API call
   function fetchData() {
     // Replace 'API_URL' with your actual API endpoint
-   var params= Object.fromEntries(new URLSearchParams(window.location.search))
     fetch('https://dev.hightable.ai/tables/view-web?id='+params.id)
       .then(response => response.json()) 
       .then(data => {
@@ -325,7 +326,7 @@ console.log("Fetching data",data);
   window.location.replace('https://play.google.com/store/apps/details?id=packgename');
 };
 var openApp = function() {
-  let redirect_url = `Hightable://LoginPageScreen?id=${581}`;
+  let redirect_url = `Hightable://BookingOrder?id=${params.id}`;
 
   window.location.replace(redirect_url);
 };
